@@ -2,31 +2,30 @@
   "author": "Martin Wawrusch <martin@wawrusch.com> (http://martinatsunset.com)",
   "name": "mongoose-plugins-created-by",
   "description": "Adds a createdBy field to a schema.",
-  "version": "0.4.0",
-  "main" : "lib/index.js",
+  "version": "0.4.1",
+  "main": "lib/index.js",
   "repository": {
     "type": "git",
     "url": "git://github.com/codedoctor/mongoose-plugins-created-by.git"
   },
-  "bin" : {
+  "bin": {},
+  "directories": {
+    "lib": "./lib",
+    "test": "./test"
   },
-  "directories" : {
-    "lib" : "./lib",
-    "test" : "./test"
-  },
-  "keywords" : [
+  "keywords": [
     "errors"
   ],
   "scripts": {
-    "prepublish" : "coffee -c -o lib src;./bin/docs",
+    "prepublish": "coffee -c -o lib src;./bin/docs",
     "test": "coffee -c -o lib src;NODE_ENV=test node_modules/.bin/mocha --timeout 10000 -R spec test/*.coffee"
   },
   "engines": {
     "node": ">=0.8.0"
   },
   "dependencies": {
-    "underscore" : ">=1.4.2",
-    "mongoose" : ">=3.4.0"
+    "underscore": ">=1.4.2",
+    "mongoose": ">=3.4.0"
   },
   "devDependencies": {
     "async": "0.2.9",
@@ -42,11 +41,13 @@
     "grunt-release": "0.6.0",
     "grunt-contrib-coffee": "0.7.0"
   },
-  "bugs": { "url": "http://github.com/codedoctor/mongoose-plugins-created-by/issues" },
+  "bugs": {
+    "url": "http://github.com/codedoctor/mongoose-plugins-created-by/issues"
+  },
   "licenses": [
-    { "type": "MIT",
+    {
+      "type": "MIT",
       "url": "http://github.com/codedoctor/mongoose-plugins-created-by/raw/master/LICENSE"
     }
   ]
-  
 }
