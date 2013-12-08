@@ -2,7 +2,7 @@
   "author": "Martin Wawrusch <martin@wawrusch.com> (http://martinatsunset.com)",
   "name": "mongoose-plugins-created-by",
   "description": "Adds a createdBy field to a schema.",
-  "version": "0.2.0",
+  "version": "0.4.0",
   "main" : "lib/index.js",
   "repository": {
     "type": "git",
@@ -18,8 +18,7 @@
     "errors"
   ],
   "scripts": {
-    "prepublish" : "coffee -c -o lib src",
-    "watch" : "coffee -c -w  -o lib src",
+    "prepublish" : "coffee -c -o lib src;./bin/docs",
     "test": "coffee -c -o lib src;NODE_ENV=test node_modules/.bin/mocha --timeout 10000 -R spec test/*.coffee"
   },
   "engines": {
@@ -30,10 +29,18 @@
     "mongoose" : ">=3.4.0"
   },
   "devDependencies": {
-    "async": "0.1.22",
-    "coffee-script": "1.4.0",
-    "should": "1.2.1",
-    "mocha": "1.6.0"
+    "async": "0.2.9",
+    "coffee-script": "1.6.3",
+    "should": "2.1.1",
+    "mocha": "1.15.1",
+    "codo": "2.0.2",
+    "grunt": "0.4.1",
+    "grunt-cli": "0.1.9",
+    "grunt-contrib-clean": "0.5.0",
+    "grunt-contrib-copy": "0.4.1",
+    "grunt-contrib-watch": "0.5.3",
+    "grunt-release": "0.6.0",
+    "grunt-contrib-coffee": "0.7.0"
   },
   "bugs": { "url": "http://github.com/codedoctor/mongoose-plugins-created-by/issues" },
   "licenses": [

@@ -10,21 +10,26 @@ YourSchema.plugin pluginCreatedBy.createdBy, isRequired : true
 
 ## Release Notes
 
+### 0.4.0
+* Changes in the infrastructure (grunt)
+* Simplified data model - after using the old one for two years it turns out that it was completely useless.
+
 ### 0.2.0
 * First version
 
-## Internal Stuff
+## Stuff
 
-* npm run-script watch
+npm test
+npm run-script docs
 
-## Publish new version
+node_modules/.bin/grunt                   # Starts the watch & test run
+node_modules/.bin/grunt coffee            # Compiles the coffeescript
 
-* Change version in package.json
-git add . -A
-git commit -m "Upgrading to v0.2.0"
-git tag -a v0.2.0 -m 'version 0.2.0'
-git push --tags
-npm publish
+node_modules/.bin/grunt release
+node_modules/.bin/grunt release:minor
+node_modules/.bin/grunt release:major
+
+
 
 ## Contributing to mongoose-plugins-created-by
  

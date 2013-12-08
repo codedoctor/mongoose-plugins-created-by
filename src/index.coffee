@@ -18,16 +18,37 @@ ActorType =
     type: MediaLinkType
 
 
-exports.createdBy = (schema, options) ->
-  options = {} unless options
-  _.defaults options, isRequired : false
+###
+The createdBy method adds a field to a schema to store the userId of the user who created this object.
+Please note that there are two versions supported. The original used the concept of an actor object,
+but it turned out to be overkill. The new one is simpler, it just addes a createdByUserId field of type ObjectId
 
-  unless options.defaultActor
-    options.defaultActor = () -> null
+To run with the old version: Do nothing.
+To run with the new version: set options.v to 2
+To not keep both fields: set options.keepV1 to false
+###
+exports.createdBy = (schema, options = {}) ->
+  _.defaults options, 
+    isRequired: false
+    v: 1
+    keepV1 : true
 
-  schema.add
-    createdBy:
-      type :  ActorType #mongoose.Schema.Types.Mixed #
-      default : options.defaultActor
-      required : options.isRequired
+  if options.v is 1 || options.keepV1
+    options.defaultActor = null unless options.defaultActor
+
+    schema.add
+      createdBy:
+        type :  ActorType #mongoose.Schema.Types.Mixed #
+        default : options.defaultActor
+        required : options.isRequired
+
+  if options.v > 1
+    defaultUserId = null
+    defaultUserId = new mongoose.Types.ObjectId options.defaultUserId.toString() if options.defaultUserId
+
+    schema.add
+      createdByUserId:
+        type: mongoose.Schema.ObjectId
+        require: options.isRequired
+        default: defaultUserId
 
